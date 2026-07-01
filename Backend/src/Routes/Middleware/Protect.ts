@@ -16,11 +16,14 @@ export const Protection = (req:Request,res:Response,next:NextFunction) => {
         
     const Auth = req.headers.authorization
 
-    if(!Auth || !Auth.startsWith('bearer')){
+ 
+
+    if(!Auth || !Auth.startsWith('Bearer ')){
         return res.status(401).json({message:'Not Authorized'})
     }
 
     const token = Auth.split(' ')[1]
+
 
     const Variable = Jwt.verify(token,process.env.LLAVE_PRIVADA_TOKEN) as Token
 
@@ -29,7 +32,7 @@ export const Protection = (req:Request,res:Response,next:NextFunction) => {
     next()
 
     } catch (error) {
-        console.log(error)
+        console.log('Error en verify',error)
         res.status(500).json({message:'Invalid Token'})
     }
 }
