@@ -26,6 +26,8 @@ RouterAppointment.get('/Allcitas',
 )
 
 RouterAppointment.get('/Myappointment',
+    body('user').notEmpty().withMessage('The username cannot be left blank'),
+    body('mail').notEmpty().isEmail().withMessage('Your username is incorrect. Please check it.'),
     Protection,
     ErrorValidate,
     ControllerAppointments.UserAppointment

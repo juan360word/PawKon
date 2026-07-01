@@ -2,7 +2,7 @@
 import {Request,Response,NextFunction} from 'express'
 import {body,param} from 'express-validator'
 import Ment from '../Models/Appointment'
-
+import mongoose from 'mongoose'
 
 export class ControllerAppointments {
    
@@ -47,8 +47,9 @@ export class ControllerAppointments {
 
      static UserAppointment = async (req:Request,res:Response) => {
         try {
-            const Appointment = await Ment.find({id: req.user?.id})
-            res.status(500).json({Appointment})
+             const userId = new mongoose.Types.ObjectId(req.user?.id)
+            const Appointment = await Ment.find({user:userId})
+            res.status(200).json({Appointment})
         } catch (error) {
             console.log(error)
             res.status(500).json({message:'Error The Citation Was Not Found '})

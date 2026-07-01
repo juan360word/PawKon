@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { Document,Schema } from "mongoose";
 
 export interface TypeMent extends Document {
-    user:Schema.Types.ObjectId,
+    user:mongoose.Types.ObjectId,
     namePet:string,
     date:Date,
     description:string,
@@ -13,10 +13,9 @@ export interface TypeMent extends Document {
 
 
 
-const MentSchema : Schema = new Schema ({
+const MentSchema : Schema = new Schema<TypeMent> ({
     user:{
         type:Schema.Types.ObjectId,
-        unique:true,
         index:true,
         trim:true,
         required:true,

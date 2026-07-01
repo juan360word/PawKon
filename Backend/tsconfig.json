@@ -9,7 +9,8 @@
         "strict": false,
         "sourceMap": true,
         "esModuleInterop": true,
-        "declaration": true
+        "declaration": true,
+        "types":["node","jest"]
     },
     "include": ["src/**/*.ts"],
     "ts-node": {

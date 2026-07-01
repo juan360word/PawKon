@@ -14,7 +14,7 @@ export interface TypeUser extends Document {
 }
 
 
-const SchemaUser : Schema = new Schema ({
+const SchemaUser : Schema = new Schema<TypeUser> ({
     name:{
         type:String,
         required: true,

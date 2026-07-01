@@ -1,5 +1,8 @@
 
 
+import dotenv from 'dotenv'
+dotenv.config()
+
 import app from "./Server";
 import { MongoDB } from "./config/MongoBD";
 

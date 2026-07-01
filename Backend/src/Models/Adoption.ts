@@ -5,7 +5,7 @@ import { Document,Schema, CallbackWithoutResultAndOptionalError } from "mongoose
 
 
 export interface AdoptionType extends Document {
-    user:Schema.Types.ObjectId,
+    user:mongoose.Types.ObjectId,
     breedName:string,
     breedImageUrl:string,
     messaje:string,
@@ -14,7 +14,7 @@ export interface AdoptionType extends Document {
 }
 
 
-const AdoptionSchema : Schema = new Schema ({
+const AdoptionSchema : Schema = new Schema<AdoptionType> ({
     user:{
         type:Schema.Types.ObjectId,
         require:true,
