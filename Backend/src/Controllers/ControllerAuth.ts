@@ -33,12 +33,12 @@ export class ControllerAuth {
 
             const user = await User.findOne({mail})
             if(!user) {
-                return res.status(401).json({messaje:'Invalid Credentials'})
+                return res.status(401).json({message:'Invalid Credentials'})
             }
 
             const Match = await user.comparePassword(password)
             if(!Match){
-                return res.status(401).json({messaje:'Invalid Credentials'})
+                return res.status(401).json({message:'Invalid Credentials'})
             }
 
 

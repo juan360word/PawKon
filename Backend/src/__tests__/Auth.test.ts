@@ -7,7 +7,7 @@ import request from 'supertest'
 
 const UserValid = {
     name: 'Juan',
-    mail: 'JUan@test.com',
+    mail: 'Juan@test.com',
     password: '123456'
 }
 
@@ -23,6 +23,25 @@ describe('Auth and Register', () => {
         expect(req.body).not.toHaveProperty('password')
 
     })
+
+    test('should not register a user with duplicate email',async () => {
+        await request(app).post('/api/Auth/Register')
+        .send(UserValid)
+        const req = await request(app)
+        .post('/api/Auth/Register')
+        .send(UserValid)
+
+        expect(req.status).toBe(400)
+        expect(req.body).toHaveProperty('message','User Already Exist')
+    })
 })
+
+
+
+
+
+
+
+
 
 

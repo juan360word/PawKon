@@ -5,6 +5,10 @@ dotenv.config()
 import mongoose from "mongoose";
 import { MongoMemoryServer } from 'mongodb-memory-server'
 
+
+// Se crea esto para poder tener un servidor aparte del que se tiene, asi 
+// al momento que se hace un test no involucra los datos reales
+
 let mongoserver: MongoMemoryServer 
 
 beforeAll (async () => {

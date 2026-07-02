@@ -32,8 +32,7 @@ export const Protection = (req:Request,res:Response,next:NextFunction) => {
     next()
 
     } catch (error) {
-        console.log('Error en verify',error)
-        res.status(500).json({message:'Invalid Token'})
+        res.status(401).json({message:'Invalid Token'})
     }
 }
 

@@ -12,14 +12,14 @@ export class ControllerAdoption {
     static create = async (req:Request,res:Response) => {
         try {
             
-            const {breedName,breedImageUrl,messaje} = req.body
+            const {breedName,breedImageUrl,message} = req.body
             const userID = new mongoose.Types.ObjectId(req.user.id)
 
             const Adoptions = await Adoption.create({
                 user: userID ,
                 breedName,
                 breedImageUrl,
-                messaje
+                message
             })
 
             res.status(201).json(Adoptions)
