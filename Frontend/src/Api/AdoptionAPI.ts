@@ -1,0 +1,66 @@
+import api from "./AxiosInstance";
+import type { createAdoption,onlyId } from "../Types/dataTypes";
+import axios from "axios";
+import type { statusAdoptions } from "../Types/dataTypes";
+
+
+export const createAdoptions = async (FormData:createAdoption) => {
+    try {
+        const url = `/Adoptions/Create`
+        const {data} = await api.post(url,FormData)
+        return data
+    } catch (error) {
+         if(axios.isAxiosError(error)){
+            throw new Error(error.response?.data.message,{cause:error});
+            
+         }
+        
+    }
+}
+
+
+export const GetMyAdoptions =  async () => {
+    try {
+        const url = `/Adoptions/MyAdoption`
+        const {data} = await api.get(url)
+        return data
+    } catch (error) {
+         if(axios.isAxiosError(error)){
+            throw new Error(error.response?.data.message,{cause:error});
+            
+         }
+        
+    }
+}
+
+
+export const GetAllAdoptions =  async () => {
+    try {
+        const url = `/Adoptions/Alladopciones`
+        const {data} = await api.get(url)
+        return data
+    } catch (error) {
+         if(axios.isAxiosError(error)){
+            throw new Error(error.response?.data.message,{cause:error});
+            
+         }
+        
+    }
+}
+
+
+export const UpdateAdoptions = async (id:onlyId,status:statusAdoptions)  => {
+    try {
+        const url = `/Adoptions/${id}/status`
+        const {data} = await api.patch(url,{status})
+        return data
+    } catch (error) {
+         if(axios.isAxiosError(error)){
+            throw new Error(error.response?.data.message,{cause:error});
+            
+         }
+    }
+}
+
+
+
