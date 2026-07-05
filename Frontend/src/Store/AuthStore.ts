@@ -1,6 +1,6 @@
 import {create } from 'zustand'
 import {persist} from 'zustand/middleware' // persiste el  guardado de las cosas 
-
+import type { AuthUser } from '../Types/dataTypes'
 
 type User = {
     id:string,
@@ -11,7 +11,7 @@ type User = {
 }
 
 type AuthStore = {
-    user: User | null,
+    user: AuthUser | null,
     token: string | null,
     setAuth: (user:User,token:string) => void,
     logout: () => void
