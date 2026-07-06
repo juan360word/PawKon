@@ -1,7 +1,7 @@
 
 import {  useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAppointments,GetAllAppointments,GetMyAppointments } from "../Api/AppointmentApi";
-
+import { DeleteAppointment } from "../Api/AppointmentApi";
 
 
 export const useMyAppo = () => {
@@ -30,5 +30,15 @@ export const useCreateAppo = () => {
   })
 }
 
+export const useDeleteAppointment = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: DeleteAppointment,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["MyAppo"] });
+    },
+  });
+};
 
 

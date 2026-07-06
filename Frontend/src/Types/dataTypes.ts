@@ -56,8 +56,12 @@ export const AdoptionSchema = v.object({
     breedImageUrl:v.string(),
     message:v.string(),
     status:statusAdoptions
+})
 
-
+export const CreateAdoptionSchema = v.object({
+    breedName: v.string(),
+    breedImageUrl: v.string(),
+    message: v.pipe(v.string(), v.minLength(10, 'Please write at least 10 characters'))
 })
 
 export type Adoption = v.InferOutput< typeof AdoptionSchema>

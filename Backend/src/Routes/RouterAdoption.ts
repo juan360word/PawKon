@@ -39,6 +39,9 @@ RouterAdoption.patch('/:id/status',
     ControllerAdoption.UpdateAdoption
 )
 
+// RouterAdoption.ts
+RouterAdoption.get('/AdoptedBreeds', ControllerAdoption.GetAdoptedBreeds);
+
 
 export default RouterAdoption
 

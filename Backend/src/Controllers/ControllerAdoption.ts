@@ -73,5 +73,20 @@ export class ControllerAdoption {
             res.status(500).json({message:'Error Update Adoption '})
         }
     }
+    
+    static GetAdoptedBreeds = async (req: Request, res: Response) => {
+        try {
+        // solo las adopciones aprobadas
+        const adoptions = await Adoption.find({ status: "approved" }).select("breedName -_id");
+    
+         // devolvemos solo un array de nombres
+        const breedNames = adoptions.map((a) => a.breedName);
+    
+            res.status(200).json({ adoptedBreeds: breedNames });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ error: "Error fetching adopted breeds" });
+        }
+};
 
 }

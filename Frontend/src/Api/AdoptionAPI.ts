@@ -62,5 +62,17 @@ export const UpdateAdoptions = async (id:onlyId,status:statusAdoptions)  => {
     }
 }
 
+export const GetAdoptedBreeds = async (): Promise<{ adoptedBreeds: string[] }> => {
+  try {
+    const { data } = await api.get<{ adoptedBreeds: string[] }>("/Adoptions/AdoptedBreeds");
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data.message, { cause: error });
+    }
+    throw error;
+  }
+}
+
 
 

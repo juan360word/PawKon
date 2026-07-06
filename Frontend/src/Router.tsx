@@ -1,7 +1,7 @@
 import {createBrowserRouter} from 'react-router-dom'
 import MainLayout from './pages/Layouts/MainLayout'
 import Home from './pages/Home'
-import { Adoption } from './pages/Adoption'
+import Adoption  from './pages/Adoption'
 import Protected from './Routers/Protected'
 import Appointments from './pages/Appointments'
 import DoctorPanel from './pages/DoctorPanel'

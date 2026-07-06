@@ -16,6 +16,7 @@ import Tool1 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/digitalXra
 import Tool2 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/sonido.png'
 import Tool3 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Sugery.png'
 import Tool4 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Laboratoy.png'
+import Tool5 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Patio.png'
 
 
 
@@ -96,5 +97,11 @@ export const VetToolsData = [
     image: Tool4,
     description: "In-house blood tests and analysis with fast results"
   },
+  {
+    id:5,
+    name:'Campus',
+    image:Tool5,
+    description:'We also have a very large patio where they and their owners can spend time together'
+  }
 ]
 

@@ -44,5 +44,18 @@ export const GetAllAppointments = async () => {
 }
 
 
+export const DeleteAppointment = async (id: string) => {
+  try {
+    const { data } = await api.delete(`/Appointments/${id}`);
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data.message, { cause: error });
+    }
+    throw error;
+  }
+};
+
+
 
    

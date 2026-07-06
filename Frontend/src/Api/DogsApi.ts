@@ -6,7 +6,7 @@ import axios from "axios";
 export const GetBreeds = async () => {
     try {
         const url = `/Dogs/breeds`
-        const {data} = await api.get<Breed>(url)
+        const {data} = await api.get<Breed[]>(url)
         return data
 
     } catch (error) {
@@ -34,7 +34,7 @@ export const GetBreedsById = async (id:number) => {
 
 export const GetImages = async (id:number) => {
     try {
-        const url = `Dogs/breeds/${id}/images`
+        const url = `/Dogs/breeds/${id}/images`
         const {data} = await api.get<BreedImage[]>(url)
         return data
     } catch (error) {

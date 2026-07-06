@@ -31,6 +31,9 @@ RouterAppointment.get('/Myappointment',
 )
 
 
+RouterAppointment.delete('/:id', Protection, ControllerAppointments.DeleteAppointment);
+
+
 
 
 export default RouterAppointment

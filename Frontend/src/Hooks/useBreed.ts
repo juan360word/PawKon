@@ -14,18 +14,18 @@ export const useBreeds = () => {
     })
 }
 
-export const useBreed = (id:string) => {
+export const useBreed = (id: number) => {
     return useQuery({
-        queryKey:['breed',id],
-        queryFn: () => GetBreedsById({id}),
-        enabled: !!id // para pasar el string a boolean (depende del resultado)
+        queryKey:['breed', id],
+        queryFn: () => GetBreedsById(id),
+        enabled: !!id
     })
 }
 
-export const useBreedImages = (id:string) => {
+export const useBreedImages = (id: number) => {
     return useQuery({
-        queryKey:['breedImages',id],
-        queryFn: () => GetImages({id}),
+        queryKey:['breedImages', id],
+        queryFn: () => GetImages(id),
         enabled: !!id
     })
 }

@@ -55,6 +55,27 @@ export class ControllerAppointments {
             res.status(500).json({message:'Error The Citation Was Not Found '})
         }
      }
+     
+        static DeleteAppointment = async (req: Request, res: Response) => {
+        try {
+            const { id } = req.params;
+
+            // solo puede eliminar sus propias citas
+            const appointment = await Ment.findOneAndDelete({
+            _id: id,
+            user: req.user?.id,
+            });
+
+            if (!appointment) {
+            return res.status(404).json({ message: "Appointment not found" });
+            }
+
+            res.status(200).json({ message: "Appointment deleted" });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: "Error deleting appointment" });
+        }
+        };
     
 }
 
