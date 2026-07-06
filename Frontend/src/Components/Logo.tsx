@@ -5,7 +5,7 @@ export default function Logo() {
   return (
    <>
    <div>
-    <img src={logo} alt="Logo" className='mx-auto' />
+    <img src={logo} alt="Logo" className=' h-15 mx-auto' />
    </div>
    </>
   )

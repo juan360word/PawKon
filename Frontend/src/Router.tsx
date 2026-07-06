@@ -22,7 +22,9 @@ import Register from './pages/Auth/Register'
        children:[
         {
             path:'/',
-            element: <Home/>
+            element: <Home/>,
+            index:true
+            
         },
         {
             path:'/adoption',
