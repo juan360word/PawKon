@@ -30,6 +30,10 @@ RouterAdoption.get('/MyAdoption',
     ErrorValidate,
     ControllerAdoption.UserGetAdoption
 )
+RouterAdoption.get('/AdoptedBreeds', ControllerAdoption.GetAdoptedBreeds);
+
+RouterAdoption.delete('/:id', Protection, IsDoctor, ControllerAdoption.DeleteAdoption);
+
 
 RouterAdoption.patch('/:id/status',
     body('status').notEmpty().isIn(['pending', 'approved', 'rejected']).withMessage('Invalid Status'),
@@ -39,8 +43,6 @@ RouterAdoption.patch('/:id/status',
     ControllerAdoption.UpdateAdoption
 )
 
-// RouterAdoption.ts
-RouterAdoption.get('/AdoptedBreeds', ControllerAdoption.GetAdoptedBreeds);
 
 
 export default RouterAdoption

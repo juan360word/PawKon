@@ -2,7 +2,7 @@
 import {  useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAppointments,GetAllAppointments,GetMyAppointments } from "../Api/AppointmentApi";
 import { DeleteAppointment } from "../Api/AppointmentApi";
-
+import { UpdateAppointmentStatus } from "../Api/AppointmentApi";
 
 export const useMyAppo = () => {
     return useQuery({
@@ -41,4 +41,15 @@ export const useDeleteAppointment = () => {
   });
 };
 
+export const useUpdateAppointmentStatus = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) =>
+      UpdateAppointmentStatus(id, status),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["AllAppo"] });
+    },
+  });
+};
 

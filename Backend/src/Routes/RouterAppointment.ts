@@ -33,6 +33,13 @@ RouterAppointment.get('/Myappointment',
 
 RouterAppointment.delete('/:id', Protection, ControllerAppointments.DeleteAppointment);
 
+RouterAppointment.patch('/:id/status',
+    Protection,
+    IsDoctor,
+    body('status').notEmpty().isIn(['pending', 'confirmed', 'completed']).withMessage('Invalid status'),
+    ErrorValidate,
+    ControllerAppointments.UpdateStatus
+)
 
 
 

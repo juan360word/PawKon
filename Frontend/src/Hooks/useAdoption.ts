@@ -1,8 +1,8 @@
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {createAdoptions,GetAllAdoptions,GetMyAdoptions,UpdateAdoptions,GetAdoptedBreeds} from '../Api/AdoptionAPI' 
-import type { onlyId, statusAdoptions } from "../Types/dataTypes";
-
+import type {  statusAdoptions } from "../Types/dataTypes";
+import { DeleteAdoption } from "../Api/AdoptionAPI";
 
 // siempre se hace en este orden cuando piden actualizacion o estados
 
@@ -35,7 +35,7 @@ export const useUpdateAdoptionStatus = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, status }: { id: onlyId; status:statusAdoptions  }) =>
+    mutationFn: ({ id, status }: { id: string; status: statusAdoptions }) =>
       UpdateAdoptions(id, status),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["allAdoptions"] });
@@ -47,5 +47,17 @@ export const useAdoptedBreeds = () => {
   return useQuery({
     queryKey: ["adoptedBreeds"],
     queryFn: GetAdoptedBreeds,
-  });
-};
+  })
+}
+
+// useAdoption.ts
+export const useDeleteAdoption = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: DeleteAdoption,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["allAdoptions"] });
+      queryClient.invalidateQueries({ queryKey: ["adoptedBreeds"] });
+    },
+  })
+}

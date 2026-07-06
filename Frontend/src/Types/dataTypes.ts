@@ -99,3 +99,14 @@ export interface BreedImage {
 
 
 
+export const RegisterDoctorSchema = v.object({
+  name: v.pipe(v.string(), v.minLength(2, "Name must be at least 2 characters"), v.maxLength(50, "Name is too long")),
+  mail: v.pipe(v.string(), v.email()),
+  password: v.pipe(v.string(), v.minLength(6, "Password must be at least 6 characters")),
+  secretCode: v.pipe(v.string(), v.minLength(1, "Secret code is required")),
+});
+
+export type RegisterDoctor = v.InferOutput<typeof RegisterDoctorSchema>;
+
+
+

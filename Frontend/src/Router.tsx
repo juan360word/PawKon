@@ -9,6 +9,8 @@ import Doctor from './Routers/Doctor'
 import AuthLayout from './pages/Layouts/AuthLayout'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
+import LoginDoctor from './pages/Auth/LoginDoctor'
+import RegisterDoctor from './pages/Auth/RegisterDoctor'
 
 
 
@@ -62,6 +64,14 @@ import Register from './pages/Auth/Register'
         {
             path:'/register',
             element:<Register/>
+        },
+        {
+            path:'/doctor/login',
+            element:<LoginDoctor/>
+        },
+        {
+            path:'/doctor/register',
+            element:<RegisterDoctor/>
         }
      ]
     }

@@ -1,5 +1,5 @@
 import api from "./AxiosInstance";
-import type { createAdoption,onlyId } from "../Types/dataTypes";
+import type { createAdoption } from "../Types/dataTypes";
 import axios from "axios";
 import type { statusAdoptions } from "../Types/dataTypes";
 
@@ -49,7 +49,7 @@ export const GetAllAdoptions =  async () => {
 }
 
 
-export const UpdateAdoptions = async (id:onlyId,status:statusAdoptions)  => {
+export const UpdateAdoptions = async (id: string, status: statusAdoptions) => {
     try {
         const url = `/Adoptions/${id}/status`
         const {data} = await api.patch(url,{status})
@@ -73,6 +73,19 @@ export const GetAdoptedBreeds = async (): Promise<{ adoptedBreeds: string[] }> =
     throw error;
   }
 }
+
+
+export const DeleteAdoption = async (id: string) => {
+  try {
+    const { data } = await api.delete(`/Adoptions/${id}`);
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data.message, { cause: error });
+    }
+    throw error;
+  }
+};
 
 
 

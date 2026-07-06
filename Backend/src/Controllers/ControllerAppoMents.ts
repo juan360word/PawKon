@@ -76,6 +76,28 @@ export class ControllerAppointments {
             res.status(500).json({ message: "Error deleting appointment" });
         }
         };
+
+    static UpdateStatus = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const appointment = await Ment.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true }
+    );
+
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+
+    res.status(200).json(appointment);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error updating appointment" });
+  }
+};
     
 }
 

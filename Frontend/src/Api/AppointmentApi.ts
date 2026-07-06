@@ -56,6 +56,18 @@ export const DeleteAppointment = async (id: string) => {
   }
 };
 
+export const UpdateAppointmentStatus = async (id: string, status: string) => {
+  try {
+    const { data } = await api.patch(`/Appointments/${id}/status`, { status });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data.message, { cause: error });
+    }
+    throw error;
+  }
+};
+
 
 
    

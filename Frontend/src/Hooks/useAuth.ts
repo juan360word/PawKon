@@ -4,6 +4,9 @@ import { useAuthStore } from "../Store/AuthStore";
 import { LoginUsers, RegisterUsers } from "../Api/AuthApi";
 import type { AuthResponse } from "../Types/dataTypes";
 import { sileo } from "sileo";
+import { RegisterDoctors } from "../Api/AuthApi";
+
+
 
 // Este es el hook mas importante por que es el que verifica
 
@@ -74,4 +77,29 @@ export const useLogout = () => {
         navigate('/login')
     }
 }
+
+// useAuth.ts — agrega esto
+export const useRegisterDoctor = () => {
+  const navigate = useNavigate();
+  const Auth = useAuthStore((item) => item.setAuth);
+
+  return useMutation({
+    mutationFn: RegisterDoctors,
+    onSuccess: (data: AuthResponse) => {
+      Auth(
+        {
+          id: data.id,
+          name: data.name,
+          mail: data.mail,
+          role: data.role,
+        },
+        data.token
+      );
+      navigate("/doctor"); // directo al panel
+    },
+    onError: (error) => {
+      console.log("error Register Doctor", error);
+    },
+  });
+};
 
