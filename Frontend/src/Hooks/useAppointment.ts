@@ -14,7 +14,8 @@ export const useMyAppo = () => {
 export const useAllAppo = () => {
     return useQuery({
         queryKey:['AllAppo'],
-        queryFn:GetAllAppointments
+        queryFn:GetAllAppointments,
+        refetchInterval: 10000
     })
 }
 
@@ -26,6 +27,7 @@ export const useCreateAppo = () => {
     mutationFn:createAppointments,
     onSuccess: () => {
         client.invalidateQueries({queryKey:['MyAppo']})
+        client.invalidateQueries({queryKey:['AllAppo']})
     }
   })
 }
@@ -37,6 +39,7 @@ export const useDeleteAppointment = () => {
     mutationFn: DeleteAppointment,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["MyAppo"] });
+      queryClient.invalidateQueries({ queryKey: ["AllAppo"] });
     },
   });
 };

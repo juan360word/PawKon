@@ -74,11 +74,11 @@ export const useLogout = () => {
 
     return () => {
         logout()
-        navigate('/login')
+        navigate('/')
     }
 }
 
-// useAuth.ts — agrega esto
+
 export const useRegisterDoctor = () => {
   const navigate = useNavigate();
   const Auth = useAuthStore((item) => item.setAuth);
@@ -95,7 +95,7 @@ export const useRegisterDoctor = () => {
         },
         data.token
       );
-      navigate("/doctor"); // directo al panel
+      navigate("/doctor"); 
     },
     onError: (error) => {
       console.log("error Register Doctor", error);
@@ -103,3 +103,37 @@ export const useRegisterDoctor = () => {
   });
 };
 
+export const useLoginDoctor = () => {
+    const navigate = useNavigate()
+    const Auth = useAuthStore((item) => item.setAuth)
+
+    return useMutation({
+        mutationFn:LoginUsers,
+        onSuccess: (data:AuthResponse) => {
+            if(!data) return
+
+            if(data.role !== 'Doctor'){
+                sileo.error({ 
+                    title: 'This login is for doctors only', 
+                    fill: "black", 
+                    duration: 2000 
+                })
+                return
+            }
+            
+            Auth({
+                id: data.id,
+                name: data.name,
+                mail: data.mail,
+                role: data.role
+            },
+                data.token
+            )
+
+            sileo.success({ title: 'Login Successful', fill: "black", duration: 2000 })
+            
+            navigate('/doctor')
+        }
+    })
+         
+}

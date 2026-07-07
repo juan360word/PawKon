@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Heart, Clock, CheckCircle } from "lucide-react";
 import { useAuthStore } from "../Store/AuthStore";
-import { useAllAppo,useUpdateAppointmentStatus } from "../Hooks/useAppointment";
+import { useAllAppo,useDeleteAppointment,useUpdateAppointmentStatus } from "../Hooks/useAppointment";
 import { useAllAdoptions,useDeleteAdoption,useUpdateAdoptionStatus } from "../Hooks/useAdoption";
 
 import { Trash2 } from "lucide-react";
@@ -27,6 +27,7 @@ interface Adoption {
   breedImageUrl: string;
   message: string;
   status: string;
+  doctorMessage?: string;
   user?: { name: string; mail: string };
 }
 
@@ -44,8 +45,11 @@ const DoctorPanel = () => {
   const adoptions: Adoption[] = adoptionsData || [];
 
   const {mutate: deleteAdoption} = useDeleteAdoption()
+  const {mutate:deleteAppointment} = useDeleteAppointment()
 
-  // ── estadísticas
+  const [messagingId, setMessagingId] = useState<string | null>(null);
+  const [doctorMessage, setDoctorMessage] = useState("");
+
   const stats = [
     {
       icon: <Calendar size={22} />,
@@ -69,7 +73,7 @@ const DoctorPanel = () => {
     },
   ];
 
-  // colores según el estado
+
   const statusColor = (status: string) => {
     switch (status) {
       case "pending": return "#eab308";
@@ -88,7 +92,7 @@ const DoctorPanel = () => {
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* ── Header */}
+
         <h1 className="text-4xl md:text-5xl font-black mb-2" style={{ color: "#72cf2a" }}>
           Welcome, Dr. {user?.name}
         </h1>
@@ -96,7 +100,7 @@ const DoctorPanel = () => {
           Here's what's happening at PawKon today
         </p>
 
-        {/* ── Stat cards */}
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {stats.map((stat, i) => (
             <motion.div
@@ -118,7 +122,7 @@ const DoctorPanel = () => {
           ))}
         </div>
 
-        {/* ── Tabs */}
+
         <div className="flex gap-2 mb-8">
           {(["appointments", "adoptions"] as Tab[]).map((tab) => (
             <button
@@ -135,7 +139,6 @@ const DoctorPanel = () => {
           ))}
         </div>
 
-        {/* ── Contenido de tabs */}
         <AnimatePresence mode="wait">
           {activeTab === "appointments" ? (
             <motion.div
@@ -181,7 +184,7 @@ const DoctorPanel = () => {
                       </p>
                     </div>
 
-                    {/* botones según el estado */}
+
                     <div className="flex gap-2">
                       {appointment.status === "pending" && (
                         <button
@@ -201,8 +204,17 @@ const DoctorPanel = () => {
                           Mark completed
                         </button>
                       )}
+                       <button
+                          onClick={() => deleteAppointment(appointment._id)}
+                          className="p-2 rounded-lg transition hover:opacity-70 self-start"
+                          style={{ color: "#ef4444" }}
+                        >
+                          <Trash2 size={18} />
+                        </button>
                     </div>
+
                   </div>
+
                 ))
               )}
             </motion.div>
@@ -254,39 +266,74 @@ const DoctorPanel = () => {
                       </p>
                     </div>
 
-                    {/* botones solo para pendientes */}
-                    {adoption.status === "pending" && (
-                      <div className="flex md:flex-col gap-2 justify-center">
-                        <button
-                          onClick={() => updateAdoption({ id: adoption._id, status: "approved" })}
-                          className="px-4 py-2 rounded-lg text-sm font-medium"
-                          style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
-                        >
-                          Approve
-                        </button>
-                        <button
-                          onClick={() => updateAdoption({ id: adoption._id, status: "rejected" })}
-                          className="px-4 py-2 rounded-lg text-sm font-medium"
-                          style={{ backgroundColor: "#ef4444", color: "#fff" }}
-                        >
-                          Reject
-                        </button>
-                      </div>
-                    )}
-                    <button
-                          onClick={() => deleteAdoption(adoption._id)}
-                          className="p-2 rounded-lg transition hover:opacity-70 self-start"
-                          style={{ color: "#ef4444" }}
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                          </div>
-                        ))
+                    <div className="flex flex-col gap-2">
+                      {adoption.status === "pending" && (
+                        <div className="flex flex-col gap-2 justify-center">
+                          {messagingId === adoption._id ? (
+                            <>
+                              <textarea
+                                value={doctorMessage}
+                                onChange={(e) => setDoctorMessage(e.target.value)}
+                                rows={2}
+                                placeholder="Message for the user (optional)..."
+                                className="px-3 py-2 rounded-lg text-sm outline-none resize-none w-48"
+                                style={{
+                                  backgroundColor: "#051d1b",
+                                  color: "#fffef0",
+                                  border: "1px solid rgba(114, 207, 42, 0.3)",
+                                }}
+                              />
+                              <div className="flex gap-2">
+                                <button
+                                  onClick={() => {
+                                    updateAdoption({ id: adoption._id, status: "approved", doctorMessage });
+                                    setMessagingId(null);
+                                    setDoctorMessage("");
+                                  }}
+                                  className="flex-1 px-3 py-2 rounded-lg text-sm font-medium"
+                                  style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
+                                >
+                                  Approve
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    updateAdoption({ id: adoption._id, status: "rejected", doctorMessage });
+                                    setMessagingId(null);
+                                    setDoctorMessage("");
+                                  }}
+                                  className="flex-1 px-3 py-2 rounded-lg text-sm font-medium"
+                                  style={{ backgroundColor: "#ef4444", color: "#fff" }}
+                                >
+                                  Reject
+                                </button>
+                              </div>
+                            </>
+                          ) : (
+                            <button
+                              onClick={() => setMessagingId(adoption._id)}
+                              className="px-4 py-2 rounded-lg text-sm font-medium"
+                              style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
+                            >
+                              Review
+                            </button>
+                          )}
+                        </div>
                       )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                      <button
+                        onClick={() => deleteAdoption(adoption._id)}
+                        className="p-2 rounded-lg transition hover:opacity-70 self-start"
+                        style={{ color: "#ef4444" }}
+                      >
+                        <Trash2 size={18} />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

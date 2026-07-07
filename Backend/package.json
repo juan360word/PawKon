@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon --exec \"ts-node --project tsconfig.dev.json src/Index.ts\""
+    "dev": "nodemon -e ts,json --exec \"ts-node --project tsconfig.dev.json src/Index.ts\""
   },
   "keywords": [],
   "author": "",

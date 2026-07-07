@@ -7,6 +7,9 @@ import { useBreeds } from "../Hooks/useBreed";
 import { useAdoptedBreeds } from "../Hooks/useAdoption";
 import type { Breed } from "../Types/dataTypes";
 import BreedModal from "../Components/ModalAdoption";
+import MyAdoptions from "../Components/MyAdoptions";
+
+
 
 const Adoption = () => {
   const { data: breeds, isLoading, error } = useBreeds();
@@ -85,7 +88,7 @@ const Adoption = () => {
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* Header */}
+      
         <h1
           className="text-5xl md:text-6xl font-black mb-4"
           style={{ color: "#72cf2a" }}
@@ -100,7 +103,7 @@ const Adoption = () => {
           gets adopted, a new friend joins the list!
         </p>
 
-        {/* Buscador */}
+      
         <input
           type="text"
           placeholder="Search breeds..."
@@ -114,7 +117,7 @@ const Adoption = () => {
           }}
         />
 
-        {/* Grid de razas */}
+        
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredBreeds?.map((breed) => (
             <div
@@ -123,7 +126,7 @@ const Adoption = () => {
               className="breed-card rounded-2xl overflow-hidden cursor-pointer transition-transform hover:scale-105 relative"
               style={{ backgroundColor: "#151212" }}
             >
-              {/* badge NEW */}
+             
               {isNewBreed(breed.name) && (
                 <span
                   className="absolute top-3 right-3 z-10 px-3 py-1 rounded-full text-xs font-bold"
@@ -153,8 +156,9 @@ const Adoption = () => {
             </div>
           ))}
         </div>
-
-        {/* mensaje si la búsqueda no encuentra nada */}
+        
+         <MyAdoptions/>
+      
         {filteredBreeds?.length === 0 && (
           <p
             className="text-center text-lg opacity-60 mt-12"
@@ -165,7 +169,7 @@ const Adoption = () => {
         )}
       </div>
 
-      {/* Modal de detalle */}
+      
       {selectedBreed && (
         <BreedModal
           breed={selectedBreed}

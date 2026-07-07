@@ -47,9 +47,12 @@ export default function NavLayout() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          <Link to={'/appointments'} className="text-sm transition hover:opacity-70" style={{ color: "#fffef0" }}>
+          {user?.role !== 'Doctor' && (
+             <Link to={'/appointments'} className="text-sm transition hover:opacity-70" style={{ color: "#fffef0" }}>
             Appointments
           </Link>
+          )}
+         
           <Link to={'/adoption'} className="text-sm transition hover:opacity-70" style={{ color: "#72cf2a" }}>
             Adoption
           </Link>

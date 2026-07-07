@@ -1,6 +1,6 @@
 
 import api from "./AxiosInstance";
-import type { createAppointment } from "../Types/dataTypes";
+import type { createAppointment, Appointment } from "../Types/dataTypes";
 import axios from "axios";
 
 export const createAppointments = async (FormData:createAppointment) => {
@@ -17,15 +17,16 @@ export const createAppointments = async (FormData:createAppointment) => {
 }
 
 
-export const GetMyAppointments = async () => {
+export const GetMyAppointments = async (): Promise<{ Appointment: Appointment[] }> => {
     try {
         const url = `/Appointments/Myappointment`
-        const {data} = await api.get(url)
+        const {data} = await api.get<{ Appointment: Appointment[] }>(url)
         return data
     } catch (error) {
           if(axios.isAxiosError(error)){
             throw new Error(error.response?.data.message,{cause:error});
          }
+        throw error
     }
 }
 

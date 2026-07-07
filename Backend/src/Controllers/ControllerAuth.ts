@@ -44,7 +44,7 @@ export class ControllerAuth {
 
             const token = webToken({ id: user._id.toString(), role: user.role.toString() })
 
-            res.status(201).json({id:user._id,name:user.name,mail:user.mail,password:user.password,token})
+            res.status(201).json({id:user._id,name:user.name,mail:user.mail,role:user.role,token})
 
             
 

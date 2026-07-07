@@ -70,6 +70,12 @@ export default function Login() {
           Register here
         </Link>
       </p>
+      <p className='  text-center text-sm mt-4'>
+        Are you Doctor?{" "}
+        <Link to='/doctor/login' className='text-blue-500'>
+          Login
+        </Link>
+      </p>
     </div>
 
   </>

@@ -1,5 +1,5 @@
 import api from "./AxiosInstance";
-import type { createAdoption } from "../Types/dataTypes";
+import type { createAdoption, Adoption } from "../Types/dataTypes";
 import axios from "axios";
 import type { statusAdoptions } from "../Types/dataTypes";
 
@@ -19,40 +19,40 @@ export const createAdoptions = async (FormData:createAdoption) => {
 }
 
 
-export const GetMyAdoptions =  async () => {
+export const GetMyAdoptions =  async (): Promise<Adoption[]> => {
     try {
         const url = `/Adoptions/MyAdoption`
-        const {data} = await api.get(url)
+        const {data} = await api.get<Adoption[]>(url)
         return data
     } catch (error) {
          if(axios.isAxiosError(error)){
             throw new Error(error.response?.data.message,{cause:error});
-            
+
          }
-        
+        throw error
     }
 }
 
 
-export const GetAllAdoptions =  async () => {
+export const GetAllAdoptions =  async (): Promise<Adoption[]> => {
     try {
         const url = `/Adoptions/Alladopciones`
-        const {data} = await api.get(url)
+        const {data} = await api.get<Adoption[]>(url)
         return data
     } catch (error) {
          if(axios.isAxiosError(error)){
             throw new Error(error.response?.data.message,{cause:error});
-            
+
          }
-        
+        throw error
     }
 }
 
 
-export const UpdateAdoptions = async (id: string, status: statusAdoptions) => {
+export const UpdateAdoptions = async (id: string, status: statusAdoptions, doctorMessage?: string) => {
     try {
         const url = `/Adoptions/${id}/status`
-        const {data} = await api.patch(url,{status})
+        const {data} = await api.patch(url,{status,doctorMessage})
         return data
     } catch (error) {
          if(axios.isAxiosError(error)){

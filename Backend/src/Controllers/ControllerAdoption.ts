@@ -59,11 +59,11 @@ export class ControllerAdoption {
       
         try {
             const {id} = req.params
-            const {status} = req.body
+            const {status,doctorMessage} = req.body
 
             const Adoptions = await Adoption.findByIdAndUpdate(
                 id,
-                {status},
+                {status,doctorMessage},
                 {new:true}
             )
 

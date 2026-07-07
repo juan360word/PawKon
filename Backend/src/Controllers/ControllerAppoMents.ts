@@ -60,11 +60,13 @@ export class ControllerAppointments {
         try {
             const { id } = req.params;
 
-            // solo puede eliminar sus propias citas
-            const appointment = await Ment.findOneAndDelete({
-            _id: id,
-            user: req.user?.id,
-            });
+            // Los doctores pueden eliminar cualquier cita, los usuarios solo las propias
+            const filter =
+                req.user?.role === 'Doctor'
+                    ? { _id: id }
+                    : { _id: id, user: req.user?.id };
+
+            const appointment = await Ment.findOneAndDelete(filter);
 
             if (!appointment) {
             return res.status(404).json({ message: "Appointment not found" });
@@ -80,11 +82,11 @@ export class ControllerAppointments {
     static UpdateStatus = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
+    const { status,DoctorMessage } = req.body;
 
     const appointment = await Ment.findByIdAndUpdate(
       id,
-      { status },
+      { status,DoctorMessage },
       { new: true }
     );
 

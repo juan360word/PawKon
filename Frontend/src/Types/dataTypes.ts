@@ -44,6 +44,14 @@ export const AppointmentSchema = v.object({
 
 export type createAppointment = v.InferOutput<typeof AppointmentSchema>
 
+export interface Appointment {
+    _id: string,
+    namePet: string,
+    description: string,
+    date: string,
+    status: 'pending' | 'confirmed' | 'completed'
+}
+
 
 
 // esto hace parte de las adopaciones
@@ -55,7 +63,8 @@ export const AdoptionSchema = v.object({
     breedName:v.string(),
     breedImageUrl:v.string(),
     message:v.string(),
-    status:statusAdoptions
+    status:statusAdoptions,
+    doctorMessage:v.optional(v.string())
 })
 
 export const CreateAdoptionSchema = v.object({

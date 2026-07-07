@@ -10,6 +10,7 @@ export const useMyAdoptions = () => {
   return useQuery({
     queryKey: ["myAdoptions"],
     queryFn:GetMyAdoptions ,
+     refetchInterval: 10000
   })
 }
 
@@ -17,6 +18,7 @@ export const useAllAdoptions = () => {
   return useQuery({
     queryKey: ["allAdoptions"],
     queryFn: GetAllAdoptions,
+    refetchInterval: 10000
   })
 }
 
@@ -27,6 +29,7 @@ export const useCreateAdoption = () => {
     mutationFn: createAdoptions,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["myAdoptions"] });
+      queryClient.invalidateQueries({ queryKey: ["allAdoptions"] });
     },
   })
 }
@@ -35,10 +38,11 @@ export const useUpdateAdoptionStatus = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, status }: { id: string; status: statusAdoptions }) =>
-      UpdateAdoptions(id, status),
+    mutationFn: ({ id, status, doctorMessage }: { id: string; status: statusAdoptions; doctorMessage?: string }) =>
+      UpdateAdoptions(id, status, doctorMessage),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["allAdoptions"] });
+      queryClient.invalidateQueries({ queryKey: ["allAdoptions"] })
+      queryClient.invalidateQueries({queryKey:["adoptedBreeds"]})
     },
   })
 }

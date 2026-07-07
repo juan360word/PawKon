@@ -37,6 +37,7 @@ RouterAdoption.delete('/:id', Protection, IsDoctor, ControllerAdoption.DeleteAdo
 
 RouterAdoption.patch('/:id/status',
     body('status').notEmpty().isIn(['pending', 'approved', 'rejected']).withMessage('Invalid Status'),
+    body('doctorMessage').optional().isString().withMessage('Invalid Doctor Message'),
     Protection,
     IsDoctor,
     ErrorValidate,

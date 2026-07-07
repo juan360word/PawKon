@@ -8,6 +8,7 @@ export interface AdoptionType extends Document {
     breedImageUrl: string,
     message: string,
     status: string,
+    doctorMessage:string
 }
 
 
@@ -35,6 +36,10 @@ const AdoptionSchema: Schema = new Schema<AdoptionType>({
         enum: ['pending', 'approved', 'rejected'],
         default: 'pending',
         required: true
+    },
+    doctorMessage:{
+        type:String,
+        default:""
     }
 }, { timestamps: true })
 

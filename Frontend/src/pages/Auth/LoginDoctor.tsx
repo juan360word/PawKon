@@ -1,7 +1,7 @@
 import {useForm} from 'react-hook-form'
 import {valibotResolver} from '@hookform/resolvers/valibot'
 import { Link } from 'react-router-dom'
-import { useLogin } from '../../Hooks/useAuth'
+import { useLoginDoctor } from '../../Hooks/useAuth'
 import type { LoginUser } from '../../Types/dataTypes'
 import { LoginSchema } from '../../Types/dataTypes'
 
@@ -16,18 +16,19 @@ export default function LoginDoctor() {
 
   const {register,handleSubmit,formState:{errors}} = useForm<LoginUser>({ resolver:valibotResolver(LoginSchema)})
 
-  const {mutate:login,isPending,error} = useLogin()
+  const {mutate:loginDoctor,isPending,error} = useLoginDoctor()
 
 
   const onSubmit = (data:LoginUser) =>  {
-    login(data)
+    loginDoctor(data)
+    console.log(data)
   }
 
   return (
   <>
 
    <div className="mx-auto w-6/15 mt-50 p-8 rounded-2xl shadow-lg bg-white">
-      <h1 className="text-2xl font-bold text-center mb-6">Welcome to PawKon</h1>
+      <h1 className="text-2xl font-bold text-center mb-6">Welcome to PawKon,Doctor</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
 
