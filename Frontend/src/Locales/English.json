@@ -1,0 +1,74 @@
+{
+  "_comentario": "Esto es la traduccion de todo pero en ingles",
+  "nav": {
+    "appointments": "Appointments",
+    "adoption": "Adoption",
+    "doctorPanel": "Doctor Panel",
+    "login": "Login",
+    "logout": "Logout",
+    "greeting": "Hi, {{name}}"
+  },
+  "home": {
+    "aboutTitle": "About PawKon",
+    "aboutP1": "Welcome to PawKon, a veterinary clinic with over 30 years of experience dedicated to the care and well-being of animals. Our team is made up of the best specialists and doctors in the field, committed to giving every animal the attention they deserve — from the smallest to the largest, all are welcome here.",
+    "aboutP2": "At PawKon, we pride ourselves on using the latest technology to accurately diagnose and treat any condition your pet may face. But above all, we know that machines are only part of the equation — what truly sets us apart is the warm, compassionate service we provide to every animal and their owner.",
+    "friendsTitle": "Meet Our Friends",
+    "toolsTitle": "Our Medical Equipment",
+    "toolsDescription": "We use state-of-the-art veterinary equipment to provide the most accurate diagnosis and effective treatments for your pets."
+  },
+  "auth": {
+    "welcomeUser": "Welcome to PawKon",
+    "welcomeDoctor": "Welcome to PawKon, Doctor",
+    "createAccount": "Create your account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "secretCode": "Secret code",
+    "loginButton": "Login",
+    "loggingIn": "Logging in...",
+    "registerButton": "Register",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "registerHere": "Register here",
+    "loginHere": "Login here"
+  },
+  "appointments": {
+    "title": "Book an appointment",
+    "subtitle": "Schedule a visit for your pet with our specialists. Fill out the form and our team will take care of the rest.",
+    "newAppointment": "New appointment",
+    "petName": "Pet name",
+    "whatsHappening": "What's happening?",
+    "date": "Date",
+    "bookButton": "Book appointment",
+    "booking": "Booking...",
+    "myAppointments": "My appointments",
+    "noAppointments": "You don't have any appointments yet. Book your first one! 🐾",
+    "created": "Appointment created successfully!"
+  },
+  "adoption": {
+    "title": "Find your new best friend",
+    "subtitle": "These are our friends currently looking for a home. When one of them gets adopted, a new friend joins the list!",
+    "search": "Search breeds...",
+    "noResults": "No breeds found matching",
+    "adoptMe": "Adopt me 🐾",
+    "myRequests": "My adoption requests",
+    "noRequests": "You haven't made any adoption requests yet 🐾",
+    "requestSent": "Request sent! 🐾",
+    "sendRequest": "Send request",
+    "sending": "Sending...",
+    "back": "Back"
+  },
+  "doctor": {
+    "welcome": "Welcome, Dr. {{name}}",
+    "subtitle": "Here's what's happening at PawKon today",
+    "totalAppointments": "Total appointments",
+    "pendingAppointments": "Pending appointments",
+    "pendingAdoptions": "Pending adoptions",
+    "approvedAdoptions": "Approved adoptions",
+    "confirm": "Confirm",
+    "markCompleted": "Mark completed",
+    "approve": "Approve",
+    "reject": "Reject",
+    "review": "Review"
+  }
+}

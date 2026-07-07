@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useMyAdoptions } from "../Hooks/useAdoption";
-import { sileo } from "sileo"; 
+import { sileo } from "sileo";
 import { useAuthStore } from "../Store/AuthStore";
+import { useTranslation } from "react-i18next";
 
 const MyAdoptions = () => {
+  const { t } = useTranslation();
   const user = useAuthStore((state) => state.user);
   const { data: adoptions, isLoading } = useMyAdoptions();
 
@@ -54,14 +56,14 @@ const MyAdoptions = () => {
   return (
     <div className="mt-20">
       <h2 className="text-3xl font-bold mb-8" style={{ color: "#72cf2a" }}>
-        My adoption requests
+        {t("adoption.myRequests")}
       </h2>
 
       {isLoading ? (
         <p className="animate-pulse" style={{ color: "#fffef0" }}>Loading...</p>
       ) : !adoptions || adoptions.length === 0 ? (
         <p className="opacity-60" style={{ color: "#fffef0" }}>
-          You haven't made any adoption requests yet 🐾
+          {t("adoption.noRequests")}
         </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

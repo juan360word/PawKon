@@ -8,10 +8,11 @@ import { useAdoptedBreeds } from "../Hooks/useAdoption";
 import type { Breed } from "../Types/dataTypes";
 import BreedModal from "../Components/ModalAdoption";
 import MyAdoptions from "../Components/MyAdoptions";
-
+import { useTranslation } from "react-i18next";
 
 
 const Adoption = () => {
+  const { t } = useTranslation();
   const { data: breeds, isLoading, error } = useBreeds();
   const { data: adoptedData } = useAdoptedBreeds();
   const [search, setSearch] = useState("");
@@ -93,20 +94,19 @@ const Adoption = () => {
           className="text-5xl md:text-6xl font-black mb-4"
           style={{ color: "#72cf2a" }}
         >
-          Find your new best friend
+          {t("adoption.title")}
         </h1>
         <p
           className="text-lg opacity-70 mb-12 max-w-2xl"
           style={{ color: "#fffef0" }}
         >
-          These are our friends currently looking for a home. When one of them
-          gets adopted, a new friend joins the list!
+          {t("adoption.subtitle")}
         </p>
 
-      
+
         <input
           type="text"
-          placeholder="Search breeds..."
+          placeholder={t("adoption.search")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full max-w-md px-6 py-3 rounded-xl mb-12 outline-none text-base"
@@ -164,7 +164,7 @@ const Adoption = () => {
             className="text-center text-lg opacity-60 mt-12"
             style={{ color: "#fffef0" }}
           >
-            No breeds found matching "{search}"
+            {t("adoption.noResults")} "{search}"
           </p>
         )}
       </div>

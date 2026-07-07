@@ -7,11 +7,10 @@ import { AppointmentSchema } from "../Types/dataTypes";
 import type { createAppointment } from "../Types/dataTypes";
 import { Trash2 } from "lucide-react";
 import { useDeleteAppointment } from "../Hooks/useAppointment";
-
-
-
+import { useTranslation } from "react-i18next";
 
 const Appointments = () => {
+  const { t } = useTranslation();
   const { data, isLoading } = useMyAppo();
   const { mutate: createAppointment, isPending, isSuccess } = useCreateAppo();
   const { mutate: deleteAppointment, isPending: isDeleting } = useDeleteAppointment();
@@ -49,14 +48,13 @@ const Appointments = () => {
           className="text-5xl md:text-6xl font-black mb-4"
           style={{ color: "#72cf2a" }}
         >
-          Book an appointment
+          {t("appointments.title")}
         </h1>
         <p
           className="text-lg opacity-70 mb-12 max-w-2xl"
           style={{ color: "#fffef0" }}
         >
-          Schedule a visit for your pet with our specialists. Fill out the form
-          and our team will take care of the rest.
+          {t("appointments.subtitle")}
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -70,7 +68,7 @@ const Appointments = () => {
             style={{ backgroundColor: "#151212" }}
           >
             <h2 className="text-2xl font-bold mb-6" style={{ color: "#72cf2a" }}>
-              New appointment
+              {t("appointments.newAppointment")}
             </h2>
 
             {isSuccess && (
@@ -78,7 +76,7 @@ const Appointments = () => {
                 className="mb-6 p-4 rounded-xl text-sm"
                 style={{ backgroundColor: "rgba(114, 207, 42, 0.1)", color: "#72cf2a" }}
               >
-                ✓ Appointment created successfully!
+                ✓ {t("appointments.created")}
               </div>
             )}
 
@@ -86,7 +84,7 @@ const Appointments = () => {
 
               <div className="flex flex-col gap-1">
                 <label className="text-sm font-medium" style={{ color: "#fffef0" }}>
-                  Pet name
+                  {t("appointments.petName")}
                 </label>
                 <input
                   {...register("namePet")}
@@ -106,7 +104,7 @@ const Appointments = () => {
 
               <div className="flex flex-col gap-1">
                 <label className="text-sm font-medium" style={{ color: "#fffef0" }}>
-                  What's happening?
+                  {t("appointments.whatsHappening")}
                 </label>
                 <textarea
                   {...register("description")}
@@ -126,7 +124,7 @@ const Appointments = () => {
 
               <div className="flex flex-col gap-1">
                 <label className="text-sm font-medium" style={{ color: "#fffef0" }}>
-                  Date
+                  {t("appointments.date")}
                 </label>
                 <input
                   {...register("date")}
@@ -150,19 +148,19 @@ const Appointments = () => {
                 className="py-4 rounded-xl font-bold text-lg mt-2 transition hover:opacity-90 disabled:opacity-50"
                 style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
               >
-                {isPending ? "Booking..." : "Book appointment"}
+                {isPending ? t("appointments.booking") : t("appointments.bookButton")}
               </button>
             </form>
           </motion.div>
 
-         
+
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h2 className="text-2xl font-bold mb-6" style={{ color: "#72cf2a" }}>
-              My appointments
+              {t("appointments.myAppointments")}
             </h2>
 
             {isLoading ? (
@@ -175,7 +173,7 @@ const Appointments = () => {
                 style={{ backgroundColor: "#151212" }}
               >
                 <p className="opacity-60" style={{ color: "#fffef0" }}>
-                  You don't have any appointments yet. Book your first one! 🐾
+                  {t("appointments.noAppointments")}
                 </p>
               </div>
             ) : (

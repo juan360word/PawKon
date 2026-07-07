@@ -10,6 +10,7 @@ import { useBreedImages } from "../Hooks/useBreed";
 import { useCreateAdoption } from "../Hooks/useAdoption";
 import { CreateAdoptionSchema } from "../Types/dataTypes";
 import type { Breed, createAdoption as AdoptionInput } from "../Types/dataTypes";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   breed: Breed;
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const BreedModal = ({ breed, onClose }: Props) => {
+  const { t } = useTranslation();
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
@@ -85,7 +87,7 @@ const BreedModal = ({ breed, onClose }: Props) => {
             // ── mensaje de éxito
             <div className="text-center py-16">
               <h2 className="text-3xl font-bold mb-4" style={{ color: "#72cf2a" }}>
-                Request sent! 🐾
+                {t("adoption.requestSent")}
               </h2>
               <p className="opacity-70 mb-8" style={{ color: "#fffef0" }}>
                 Our team will review your adoption request for {breed.name} soon.
@@ -131,7 +133,7 @@ const BreedModal = ({ breed, onClose }: Props) => {
                     className="flex-1 py-3 rounded-xl font-medium border"
                     style={{ borderColor: "#72cf2a", color: "#72cf2a" }}
                   >
-                    Back
+                    {t("adoption.back")}
                   </button>
                   <button
                     type="submit"
@@ -139,7 +141,7 @@ const BreedModal = ({ breed, onClose }: Props) => {
                     className="flex-1 py-3 rounded-xl font-medium disabled:opacity-50"
                     style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
                   >
-                    {isPending ? "Sending..." : "Send request"}
+                    {isPending ? t("adoption.sending") : t("adoption.sendRequest")}
                   </button>
                 </div>
               </form>
@@ -197,7 +199,7 @@ const BreedModal = ({ breed, onClose }: Props) => {
                 className="w-full py-4 rounded-xl font-bold text-lg transition hover:opacity-90"
                 style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
               >
-                Adopt me 🐾
+                {t("adoption.adoptMe")}
              </button>
             </div>
           )}

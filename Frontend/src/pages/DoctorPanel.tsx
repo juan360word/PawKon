@@ -8,6 +8,7 @@ import { useAllAppo,useDeleteAppointment,useUpdateAppointmentStatus } from "../H
 import { useAllAdoptions,useDeleteAdoption,useUpdateAdoptionStatus } from "../Hooks/useAdoption";
 
 import { Trash2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 
 type Tab = "appointments" | "adoptions";
@@ -32,6 +33,7 @@ interface Adoption {
 }
 
 const DoctorPanel = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<Tab>("appointments");
   const user = useAuthStore((state) => state.user);
 
@@ -54,22 +56,22 @@ const DoctorPanel = () => {
     {
       icon: <Calendar size={22} />,
       value: appointments.length,
-      label: "Total appointments",
+      label: t("doctor.totalAppointments"),
     },
     {
       icon: <Clock size={22} />,
       value: appointments.filter((a: Appointment) => a.status === "pending").length,
-      label: "Pending appointments",
+      label: t("doctor.pendingAppointments"),
     },
     {
       icon: <Heart size={22} />,
       value: adoptions.filter((a: Adoption) => a.status === "pending").length,
-      label: "Pending adoptions",
+      label: t("doctor.pendingAdoptions"),
     },
     {
       icon: <CheckCircle size={22} />,
       value: adoptions.filter((a: Adoption) => a.status === "approved").length,
-      label: "Approved adoptions",
+      label: t("doctor.approvedAdoptions"),
     },
   ];
 
@@ -94,10 +96,10 @@ const DoctorPanel = () => {
 
 
         <h1 className="text-4xl md:text-5xl font-black mb-2" style={{ color: "#72cf2a" }}>
-          Welcome, Dr. {user?.name}
+          {t("doctor.welcome", { name: user?.name })}
         </h1>
         <p className="text-lg opacity-60 mb-10" style={{ color: "#fffef0" }}>
-          Here's what's happening at PawKon today
+          {t("doctor.subtitle")}
         </p>
 
 
@@ -192,7 +194,7 @@ const DoctorPanel = () => {
                           className="px-4 py-2 rounded-lg text-sm font-medium"
                           style={{ backgroundColor: "#3b82f6", color: "#fff" }}
                         >
-                          Confirm
+                          {t("doctor.confirm")}
                         </button>
                       )}
                       {appointment.status === "confirmed" && (
@@ -201,7 +203,7 @@ const DoctorPanel = () => {
                           className="px-4 py-2 rounded-lg text-sm font-medium"
                           style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
                         >
-                          Mark completed
+                          {t("doctor.markCompleted")}
                         </button>
                       )}
                        <button
@@ -293,7 +295,7 @@ const DoctorPanel = () => {
                                   className="flex-1 px-3 py-2 rounded-lg text-sm font-medium"
                                   style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
                                 >
-                                  Approve
+                                  {t("doctor.approve")}
                                 </button>
                                 <button
                                   onClick={() => {
@@ -304,7 +306,7 @@ const DoctorPanel = () => {
                                   className="flex-1 px-3 py-2 rounded-lg text-sm font-medium"
                                   style={{ backgroundColor: "#ef4444", color: "#fff" }}
                                 >
-                                  Reject
+                                  {t("doctor.reject")}
                                 </button>
                               </div>
                             </>
@@ -314,7 +316,7 @@ const DoctorPanel = () => {
                               className="px-4 py-2 rounded-lg text-sm font-medium"
                               style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
                             >
-                              Review
+                              {t("doctor.review")}
                             </button>
                           )}
                         </div>

@@ -1,0 +1,74 @@
+{
+  "_comentario": "Esto es la traduccion de todo pero en  Español ",
+  "nav": {
+    "appointments": "Citas",
+    "adoption": "Adopción",
+    "doctorPanel": "Panel del Doctor",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "greeting": "Hola, {{name}}"
+  },
+  "home": {
+    "aboutTitle": "Sobre PawKon",
+    "aboutP1": "Bienvenido a PawKon, una clínica veterinaria con más de 30 años de experiencia dedicada al cuidado y bienestar de los animales. Nuestro equipo está formado por los mejores especialistas y doctores del campo, comprometidos a darle a cada animal la atención que merece — desde el más pequeño hasta el más grande, todos son bienvenidos.",
+    "aboutP2": "En PawKon nos enorgullece usar la última tecnología para diagnosticar y tratar con precisión cualquier condición de tu mascota. Pero sobre todo, sabemos que las máquinas son solo parte de la ecuación — lo que realmente nos distingue es el servicio cálido y compasivo que brindamos a cada animal y su dueño.",
+    "friendsTitle": "Conoce a Nuestros Amigos",
+    "toolsTitle": "Nuestro Equipo Médico",
+    "toolsDescription": "Usamos equipos veterinarios de última generación para brindar el diagnóstico más preciso y los tratamientos más efectivos para tus mascotas."
+  },
+  "auth": {
+    "welcomeUser": "Bienvenido a PawKon",
+    "welcomeDoctor": "Bienvenido a PawKon, Doctor",
+    "createAccount": "Crea tu cuenta",
+    "email": "Correo",
+    "password": "Contraseña",
+    "name": "Nombre",
+    "secretCode": "Código secreto",
+    "loginButton": "Iniciar sesión",
+    "loggingIn": "Iniciando...",
+    "registerButton": "Registrarse",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "registerHere": "Regístrate aquí",
+    "loginHere": "Inicia sesión aquí"
+  },
+  "appointments": {
+    "title": "Agenda una cita",
+    "subtitle": "Programa una visita para tu mascota con nuestros especialistas. Llena el formulario y nuestro equipo se encarga del resto.",
+    "newAppointment": "Nueva cita",
+    "petName": "Nombre de la mascota",
+    "whatsHappening": "¿Qué está pasando?",
+    "date": "Fecha",
+    "bookButton": "Agendar cita",
+    "booking": "Agendando...",
+    "myAppointments": "Mis citas",
+    "noAppointments": "Aún no tienes citas. ¡Agenda la primera! 🐾",
+    "created": "¡Cita creada exitosamente!"
+  },
+  "adoption": {
+    "title": "Encuentra a tu nuevo mejor amigo",
+    "subtitle": "Estos son nuestros amigos buscando un hogar. Cuando uno es adoptado, ¡un nuevo amigo se une a la lista!",
+    "search": "Buscar razas...",
+    "noResults": "No se encontraron razas con",
+    "adoptMe": "Adóptame 🐾",
+    "myRequests": "Mis solicitudes de adopción",
+    "noRequests": "Aún no has hecho solicitudes de adopción 🐾",
+    "requestSent": "¡Solicitud enviada! 🐾",
+    "sendRequest": "Enviar solicitud",
+    "sending": "Enviando...",
+    "back": "Volver"
+  },
+  "doctor": {
+    "welcome": "Bienvenido, Dr. {{name}}",
+    "subtitle": "Esto es lo que está pasando en PawKon hoy",
+    "totalAppointments": "Citas totales",
+    "pendingAppointments": "Citas pendientes",
+    "pendingAdoptions": "Adopciones pendientes",
+    "approvedAdoptions": "Adopciones aprobadas",
+    "confirm": "Confirmar",
+    "markCompleted": "Marcar completada",
+    "approve": "Aprobar",
+    "reject": "Rechazar",
+    "review": "Revisar"
+  }
+}

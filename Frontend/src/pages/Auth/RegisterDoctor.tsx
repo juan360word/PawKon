@@ -4,10 +4,12 @@ import { sileo } from 'sileo'
 import { RegisterDoctorSchema, type RegisterDoctor } from '../../Types/dataTypes'
 import { useRegisterDoctor } from '../../Hooks/useAuth'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 
 export default function RegisterDoctor() {
 
+  const { t } = useTranslation()
   const { register, handleSubmit, reset } = useForm<RegisterDoctor>({
     resolver: valibotResolver(RegisterDoctorSchema)
   })
@@ -37,12 +39,12 @@ export default function RegisterDoctor() {
   return (
     <>
       <div className="mx-auto w-6/15 mt-30 p-8 rounded-2xl shadow-lg bg-white">
-        <h1 className="text-2xl font-bold text-center mb-6">Register as Doctor</h1>
+        <h1 className="text-2xl font-bold text-center mb-6">{t("auth.createAccount")}</h1>
 
         <form onSubmit={handleSubmit(onSubmit, onError)} className="flex flex-col gap-4">
 
           <div className='flex items-center flex-col gap-4'>
-            <label className='text-sm font-medium'>Username</label>
+            <label className='text-sm font-medium'>{t("auth.name")}</label>
             <input
               {...register('name')}
               placeholder='Your Name'
@@ -52,7 +54,7 @@ export default function RegisterDoctor() {
           </div>
 
           <div className='flex flex-col items-center gap-4'>
-            <label>Email</label>
+            <label>{t("auth.email")}</label>
             <input
               type="email"
               {...register('mail')}
@@ -62,7 +64,7 @@ export default function RegisterDoctor() {
           </div>
 
           <div className="flex items-center flex-col gap-4">
-            <label className="text-sm font-medium">Password</label>
+            <label className="text-sm font-medium">{t("auth.password")}</label>
             <input
               {...register("password")}
               type="password"
@@ -72,7 +74,7 @@ export default function RegisterDoctor() {
           </div>
 
           <div className="flex flex-col items-center gap-4">
-            <label className="text-sm font-medium">Secret code</label>
+            <label className="text-sm font-medium">{t("auth.secretCode")}</label>
             <input
               {...register("secretCode")}
               type="password"
@@ -90,15 +92,15 @@ export default function RegisterDoctor() {
             disabled={isPending}
             className="bg-black text-white py-2 rounded-lg font-medium cursor-pointer hover:bg-blue-600 transition disabled:opacity-50"
           >
-            {isPending ? "Registering..." : "Register as Doctor"}
+            {isPending ? t("auth.loggingIn") : t("auth.registerButton")}
           </button>
 
         </form>
 
         <p className="text-center text-sm mt-4">
-          Already have an account?{" "}
+          {t("auth.hasAccount")}{" "}
           <Link to="/doctor/login" className="text-blue-500 hover:underline">
-            Login here
+            {t("auth.loginHere")}
           </Link>
         </p>
       </div>

@@ -5,8 +5,15 @@ import { Link } from "react-router-dom"
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuthStore } from "../../Store/AuthStore"
 import { useLogout } from "../../Hooks/useAuth"
+import { useTranslation } from "react-i18next"
+import LanguageSwitch from "../../Components/LanguageSwitch"
+
+
 
 export default function NavLayout() {
+
+  const {t} = useTranslation()
+
   const [isVisible, setVisible] = useState(true)
   const [lastScroll, setScroll] = useState(0)
   const [isMenuOpen, setMenu] = useState(false)
@@ -47,32 +54,33 @@ export default function NavLayout() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
+            <LanguageSwitch />
           {user?.role !== 'Doctor' && (
              <Link to={'/appointments'} className="text-sm transition hover:opacity-70" style={{ color: "#fffef0" }}>
-            Appointments
+            {t("nav.appointments")}
           </Link>
           )}
-         
+
           <Link to={'/adoption'} className="text-sm transition hover:opacity-70" style={{ color: "#72cf2a" }}>
-            Adoption
+            {t("nav.adoption")}
           </Link>
           {user?.role === 'Doctor' && (
             <Link to={'/doctor'} className="text-sm transition hover:opacity-70" style={{ color: "#72cf2a" }}>
-              Doctor Panel
+              {t("nav.doctorPanel")}
             </Link>
           )}
           {user ? (
             <div className="items-center flex gap-4">
               <span className="text-sm" style={{ color: "#fffef0" }}>
-                Hi, {user.name}
+                {t("nav.greeting", { name: user.name })}
               </span>
               <button onClick={logout} className="text-sm font-medium px-4 py-2 rounded-xl transition hover:opacity-80" style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}>
-                Logout
+                {t("nav.logout")}
               </button>
             </div>
           ) : (
             <Link to={'/login'} className="text-sm font-medium px-4 py-2 rounded-xl transition hover:opacity-80" style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}>
-              Login
+              {t("nav.login")}
             </Link>
           )}
         </div>
@@ -108,27 +116,27 @@ export default function NavLayout() {
             className="md:hidden flex flex-col gap-4 pt-4 pb-2 px-2"
           >
             <Link to="/appointments" onClick={() => setMenu(false)} className="text-sm font-medium" style={{ color: "#fffef0" }}>
-              Appointments
+             {t("nav.appointments")}
             </Link>
             <Link to="/adoption" onClick={() => setMenu(false)} className="text-sm font-medium" style={{ color: "#fffef0" }}>
-              Adoption
+              {t("nav.adoption")}
             </Link>
             {user?.role === "Doctor" && (
               <Link to="/doctor" onClick={() => setMenu(false)} className="text-sm font-medium" style={{ color: "#72cf2a" }}>
-                Doctor Panel
+                {t("nav.doctorPanel")}
               </Link>
             )}
             {user ? (
               <>
                 <span className="text-sm" style={{ color: "#fffef0" }}>
-                  Hi, {user.name}
+                  {t("nav.greeting", { name: user.name })}
                 </span>
                 <button
                   onClick={() => { logout(); setMenu(false) }}
                   className="text-sm font-medium px-4 py-2 rounded-lg w-fit"
                   style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
                 >
-                  Logout
+                  {t("nav.logout")}
                 </button>
               </>
             ) : (
@@ -138,7 +146,7 @@ export default function NavLayout() {
                 className="text-sm font-medium px-4 py-2 rounded-lg w-fit"
                 style={{ backgroundColor: "#72cf2a", color: "#051d1b" }}
               >
-                Login
+                {t("nav.login")}
               </Link>
             )}
           </motion.div>

@@ -4,6 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger"
 import  { AnimalesData } from "../Types/DataInfo"
 import IconVeterinaria from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Veterian.png'
 import { VetToolsData } from "../Types/DataInfo"
+import { useTranslation } from "react-i18next"
 
 
 
@@ -12,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 export default function Home() {
+  const { t } = useTranslation()
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
@@ -200,19 +202,13 @@ export default function Home() {
                 className="text-4xl md:text-5xl font-bold"
                 style={{ color: "#72cf2a" }}
               >
-                About PawKon
+                {t("home.aboutTitle")}
               </h2>
               <p style={{ color: '#fffef0' }} className="info-paragraph text-xl leading-relaxed opacity-80">
-                Welcome to PawKon, a veterinary clinic with over 30 years of experience dedicated
-                to the care and well-being of animals. Our team is made up of the best specialists and doctors
-                in the field, committed to giving every animal the attention they deserve — from the smallest to
-                the largest, all are welcome here.
+                {t("home.aboutP1")}
               </p>
               <p style={{ color: '#fffef0' }} className="info-paragraph text-xl leading-relaxed opacity-80">
-                At PawKon, we pride ourselves on using the latest technology
-                to accurately diagnose and treat any condition your pet may face.
-                But above all, we know that machines are only part of the equation — what truly sets us
-                apart is the warm, compassionate service we provide to every animal and their owner.
+                {t("home.aboutP2")}
               </p>
             </div>
             <div className="flex items-center justify-center">
@@ -238,7 +234,7 @@ export default function Home() {
               className="text-4xl font-bold text-center mb-12"
               style={{ color: "#72cf2a" }}
             >
-              Meet Our Friends
+              {t("home.friendsTitle")}
             </h2>
             <div
               ref={dogsTrackRef}
@@ -286,11 +282,10 @@ export default function Home() {
                 className="text-3xl md:text-4xl font-bold"
                 style={{ color: "#72cf2a" }}
               >
-                Our Medical Equipment
+                {t("home.toolsTitle")}
               </h2>
               <p style={{ color: '#fffef0' }} className="text-xl opacity-70">
-                We use state-of-the-art veterinary equipment to provide
-                the most accurate diagnosis and effective treatments for your pets.
+                {t("home.toolsDescription")}
               </p>
             </div>
 

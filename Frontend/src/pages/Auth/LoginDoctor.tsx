@@ -4,16 +4,11 @@ import { Link } from 'react-router-dom'
 import { useLoginDoctor } from '../../Hooks/useAuth'
 import type { LoginUser } from '../../Types/dataTypes'
 import { LoginSchema } from '../../Types/dataTypes'
-
-
-
-
-
-
-
+import { useTranslation } from 'react-i18next'
 
 export default function LoginDoctor() {
 
+  const { t } = useTranslation()
   const {register,handleSubmit,formState:{errors}} = useForm<LoginUser>({ resolver:valibotResolver(LoginSchema)})
 
   const {mutate:loginDoctor,isPending,error} = useLoginDoctor()
@@ -28,12 +23,12 @@ export default function LoginDoctor() {
   <>
 
    <div className="mx-auto w-6/15 mt-50 p-8 rounded-2xl shadow-lg bg-white">
-      <h1 className="text-2xl font-bold text-center mb-6">Welcome to PawKon,Doctor</h1>
+      <h1 className="text-2xl font-bold text-center mb-6">{t("auth.welcomeDoctor")}</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
 
         <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium">Email</label>
+          <label className="text-sm font-medium">{t("auth.email")}</label>
           <input
             {...register("mail")}
             type="email"
@@ -46,7 +41,7 @@ export default function LoginDoctor() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium">Password</label>
+          <label className="text-sm font-medium">{t("auth.password")}</label>
           <input
             {...register("password")}
             type="password"
@@ -67,15 +62,15 @@ export default function LoginDoctor() {
           disabled={isPending}
           className="bg-black text-white py-2 rounded-lg font-medium cursor-pointer hover:bg-blue-600 transition disabled:opacity-50"
         >
-          {isPending ? "Logging in..." : "Login"}
+          {isPending ? t("auth.loggingIn") : t("auth.loginButton")}
         </button>
 
       </form>
 
       <p className="text-center text-sm mt-4">
-        Don't have an account?{" "}
+        {t("auth.noAccount")}{" "}
         <Link to="/doctor/register" className="text-blue-500 ">
-          Register here
+          {t("auth.registerHere")}
         </Link>
       </p>
     </div>
