@@ -11,7 +11,7 @@ import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import LoginDoctor from './pages/Auth/LoginDoctor'
 import RegisterDoctor from './pages/Auth/RegisterDoctor'
-
+import NotFound from './pages/NotFound404'
 
 
 //paginas 
@@ -74,5 +74,10 @@ import RegisterDoctor from './pages/Auth/RegisterDoctor'
             element:<RegisterDoctor/>
         }
      ]
+    },
+    {
+    path: "*",
+    element: <NotFound />,
     }
+    
  ])

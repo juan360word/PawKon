@@ -24,7 +24,7 @@ export default function Home() {
   useEffect(() => {
     const ctx = gsap.context(() => {
 
-      // ── Sección 1 — título letra por letra con rebote
+   
       const letters = titleRef.current?.querySelectorAll(".letter");
       if (letters) {
         gsap.fromTo(
@@ -42,7 +42,7 @@ export default function Home() {
         );
       }
 
-      // ── Sección 2 — título desde la izquierda + párrafos reveal
+     
       gsap.fromTo(
         infoTitleRef.current,
         { x: -200, opacity: 0 },
@@ -90,7 +90,7 @@ export default function Home() {
         }
       );
 
-      // ── Sección 3 — scroll horizontal de cards
+     
       const track = dogsTrackRef.current;
       if (track) {
         const totalWidth = track.scrollWidth - window.innerWidth;
@@ -109,30 +109,57 @@ export default function Home() {
         });
       }
 
-      // ── Sección 4 — herramientas veterinarias con pin
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: toolsRef.current,
-          start: "top top",
-          end: "+=1300",
-          pin: true,
-          scrub: 1,
-        },
-      });
 
-      tl.to(toolsContentRef.current, {
-        x: "180%",
-        duration: 1,
-        ease: "power2.inOut",
-      });
+              const toolsTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: toolsRef.current,
+            start: "top top",
+            end: "+=1000",
+            pin: true,
+            scrub: 1,
+          },
+        });
 
-        tl.from(".tool-card", {
-      opacity: 0,
-       x: -60,
-      stagger: 0.1,
-      duration: 0.5,
-});
+        
+        toolsTl.fromTo(
+          toolsContentRef.current,
+          { x: -100, opacity: 0, filter: "blur(10px)" },
+          {
+            x: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            duration: 1,
+            ease: "power3.out",
+          }
+        );
 
+       
+        toolsTl.to(toolsContentRef.current, {
+          x: "-230%",
+          duration: 1.5,
+          ease: "power2.inOut",
+        });
+
+        
+        toolsTl.fromTo(
+          ".tool-card",
+          {
+            opacity: 0,
+            y: 80,
+            rotateY: -15,
+            scale: 0.9,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "back.out(1.4)",
+          },
+          "-=0.8"
+        );
 
     });
 
@@ -144,7 +171,7 @@ export default function Home() {
     <>
       <div style={{ backgroundColor: "#051d1b", paddingBottom: "100px" }}>
 
-        {/* ── Sección 1 — Hero */}
+       
         <section
           ref={heroRef}
           className="h-screen flex items-center justify-center overflow-hidden"
@@ -162,7 +189,6 @@ export default function Home() {
           </h1>
         </section>
 
-        {/* ── Sección 2 — Info veterinaria */}
         <section className="min-h-screen flex items-center px-8 md:px-20 py-20">
           <div
             ref={infoRef}
@@ -204,7 +230,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Sección 3 — Scroll horizontal de animales */}
+       
         <section ref={dogsRef} className="h-screen overflow-hidden">
           
           <div className="h-full flex flex-col justify-center">
@@ -248,30 +274,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Sección 4 — Herramientas de la veterinaria */}
+        
         <section
           ref={toolsRef}
-          className="h-screen flex items-center px-8 md:px-20 overflow-hidden"
+          className="min-h-screen flex items-center px-8 md:px-20 py-20"
           style={{ backgroundColor: "#051d1b" }}
         >
-          <div className="max-w-6xl mx-auto w-full relative">
-            <h2
-              className="text-4xl font-bold mb-12"
-              style={{ color: "#72cf2a" }}
-            >
-              Our Medical Equipment
-            </h2>
-
-            {/* contenido que se mueve a la derecha */}
-            <div ref={toolsContentRef} className="flex flex-col gap-4 w-fit">
-              <p style={{ color: '#fffef0' }} className="text-xl opacity-70 max-w-sm">
+          <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_2fr] gap-12">
+            <div ref={toolsContentRef} className="flex flex-col gap-4">
+              <h2
+                className="text-3xl md:text-4xl font-bold"
+                style={{ color: "#72cf2a" }}
+              >
+                Our Medical Equipment
+              </h2>
+              <p style={{ color: '#fffef0' }} className="text-xl opacity-70">
                 We use state-of-the-art veterinary equipment to provide
                 the most accurate diagnosis and effective treatments for your pets.
               </p>
             </div>
 
-            {/* tools cards que aparecen */}
-            <div className="absolute top-15 left-0 w-full md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {VetToolsData.map((tool) => (
                 <div
                   key={tool.id}
@@ -281,12 +304,12 @@ export default function Home() {
                   <img
                     src={tool.image}
                     alt={tool.name}
-                    className="w-full h-32 object-cover rounded-lg"
+                    className="w-full h-40 object-cover rounded-lg"
                   />
-                  <h3 className="text-lg font-bold mt-3" style={{ color: "#72cf2a" }}>
+                  <h3 className="text-xl font-bold mt-4" style={{ color: "#72cf2a" }}>
                     {tool.name}
                   </h3>
-                  <p style={{ color: '#fffef0' }} className="text-sm opacity-60 mt-1">
+                  <p style={{ color: '#fffef0' }} className="text-base opacity-60 mt-2">
                     {tool.description}
                   </p>
                 </div>

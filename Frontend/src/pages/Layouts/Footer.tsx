@@ -8,10 +8,9 @@ export default function Footer() {
     <footer style={{ backgroundColor: "#151212" }} className="pt-16 pb-8 px-8 md:px-20">
       <div className="max-w-6xl mx-auto">
 
-        {/* contenido principal del footer */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12">
 
-          {/* Logo + descripción */}
+          
           <div className="md:col-span-2 flex flex-col gap-4">
             <Logo/>
             <p style={{ color: "#fffef0" }} className="text-sm opacity-60 max-w-xs leading-relaxed">
@@ -20,7 +19,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Links de navegación */}
           <div className="flex flex-col gap-3">
             <h4 className="text-sm font-bold uppercase tracking-wider" style={{ color: "#72cf2a" }}>
               Quick Links
@@ -39,19 +37,19 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Info de contacto */}
+          
           <div className="flex flex-col gap-3">
             <h4 className="text-sm font-bold uppercase tracking-wider" style={{ color: "#72cf2a" }}>
               Contact
             </h4>
             <p className="text-sm opacity-60" style={{ color: "#fffef0" }}>
-              📍 123 Pet Street, Animal City
+              📍 123 Pet Street, Animal out City
             </p>
             <p className="text-sm opacity-60" style={{ color: "#fffef0" }}>
-              📞 +1 (555) 123-4567
+              📞 57+ 3138094918
             </p>
             <p className="text-sm opacity-60" style={{ color: "#fffef0" }}>
-              ✉️ hello@pawkon.com
+              ✉️ serratoalvaradojuandavid@gmail.com
             </p>
             <p className="text-sm opacity-60" style={{ color: "#fffef0" }}>
               🕒 Mon - Sat: 8am - 8pm
@@ -59,7 +57,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* línea divisoria + copyright */}
+       
         <div
           className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid rgba(255, 254, 240, 0.1)" }}

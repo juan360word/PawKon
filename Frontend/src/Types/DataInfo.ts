@@ -17,7 +17,9 @@ import Tool2 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/sonido.png
 import Tool3 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Sugery.png'
 import Tool4 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Laboratoy.png'
 import Tool5 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Patio.png'
-
+import Tool6 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/eat.png'
+import Tool7 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Lavado.png'
+import Tool8 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/toys.png'
 
 
 export const AnimalesData = [
@@ -61,13 +63,13 @@ export const AnimalesData = [
         id:6,
         name:'Pogo',
         image:Image6,
-        description:'Pogo was a little pig who lived with owners who loved each other very much, but they separated. They didn`t abandon him, though—PawKon found him, gave him a bath, and now he`s playing with the others.'
+        description:'Pogo was a little pig who lived with owners who loved each other very much, but they separated. They didn`t abandon him, though PawKon found him, gave him a bath, and now he`s playing with the others.'
     },
     {
         id:7,
         name:'Tony',
         image:Image7,
-        description:'Tony was the only dog we couldn`t save. We tried everything—we cleaned him, bathed him, gave him everything we could, and kept trying. Even the other animals could sense it and became sad, but he passed away. What makes him special and memorable is the kindness he showed to everyone, and also how much his family loves him.'
+        description:'Tony was the only dog we couldn`t save. We tried everything we cleaned him, bathed him, gave him everything we could, and kept trying. Even the other animals could sense it and became sad, but he passed away. What makes him special and memorable is the kindness he showed to everyone, and also how much his family loves him.'
     }
 ]
 
@@ -77,13 +79,13 @@ export const VetToolsData = [
     id: 1,
     name: "Digital X-Ray",
     image: Tool1,
-    description: "High-resolution imaging for accurate bone and organ diagnosis"
+    description: "High resolution imaging for accurate bone and organ diagnosis"
   },
   {
     id: 2,
     name: "Ultrasound Scanner",
     image: Tool2,
-    description: "Non-invasive internal examination in real time"
+    description: "Non invasive internal examination in real time"
   },
   {
     id: 3,
@@ -95,13 +97,31 @@ export const VetToolsData = [
     id: 4,
     name: "Laboratory",
     image: Tool4,
-    description: "In-house blood tests and analysis with fast results"
+    description: "In house blood tests and analysis with fast results"
   },
   {
     id:5,
     name:'Campus',
     image:Tool5,
     description:'We also have a very large patio where they and their owners can spend time together'
+  },
+  {
+    id:6,
+    name:'Healthful Food',
+    image:Tool6,
+    description:'We prepare very carefully selected, high-quality meals for them, since we make the food ourselves'
+  },
+  {
+    id:7,
+    name:'washing',
+    image:Tool7,
+    description:'We provide a complete grooming service with no hassle we wash their teeth, paws, tail, and body with great care, just as we would for them and for our employees'
+  },
+  {
+    id:8,
+    name:'Toys',
+    image:Tool8,
+    description:'toys for them so they won`t get scared and can have a good time while playing with other animals'
   }
 ]
 
