@@ -2,7 +2,7 @@ import { useEffect,useRef } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import  { AnimalesData } from "../Types/DataInfo"
-import IconVeterinaria from 'Veterian.png'
+import IconVeterinaria from '/Veterian.png'
 import { VetToolsData } from "../Types/DataInfo"
 import { useTranslation } from "react-i18next"
 import i18n from "../Locales/I18n/Traduccion_I18n"
