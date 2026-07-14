@@ -125,7 +125,7 @@ export default function Home() {
         });
 
         
-        toolsTl.fromTo(
+           toolsTl.fromTo(
           toolsContentRef.current,
           { x: -100, opacity: 0, filter: "blur(10px)" },
           {
@@ -168,7 +168,9 @@ export default function Home() {
     });
 
   
+    
     return () => ctx.revert();
+
   }, []);
 
   return (
@@ -293,7 +295,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {VetToolsData.map((tool) => (
-                <div
+                  <div
                   key={tool.id}
                   className="tool-card p-6 rounded-2xl"
                   style={{ backgroundColor: "#151212" }}
