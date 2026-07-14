@@ -1,5 +1,5 @@
 
-import logo from '/home/juan360dev/Escritorio/PawKon/Frontend/public/pawkon_blanco.png'
+import logo from '/pawkon_blanco.png'
 
 export default function Logo() {
   return (

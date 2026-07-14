@@ -32,5 +32,5 @@ build/
 
 # Otros
 *.local
-
+.github
 .vscan

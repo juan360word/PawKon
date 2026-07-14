@@ -1,25 +1,25 @@
 
 // Informacion de aniamles
 
-import Image1  from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Perro1.png'
-import Image2 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Gato1.png'
-import Image3 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Pin.png'
-import Image4 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/OsoBonito.png'
-import Image5 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/ciervo.png'
-import Image6 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Cerdito.png'
-import Image7 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Tony.png'
+import Image1  from '/Perro1.png'
+import Image2 from '/Gato1.png'
+import Image3 from '/Pin.png'
+import Image4 from '/OsoBonito.png'
+import Image5 from '/ciervo.png'
+import Image6 from '/Cerdito.png'
+import Image7 from '/Tony.png'
 
 
 // Informacion Tools
 
-import Tool1 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/digitalXray.png'
-import Tool2 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/sonido.png'
-import Tool3 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Sugery.png'
-import Tool4 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Laboratoy.png'
-import Tool5 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Patio.png'
-import Tool6 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/eat.png'
-import Tool7 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Lavado.png'
-import Tool8 from '/home/juan360dev/Escritorio/PawKon/Frontend/public/toys.png'
+import Tool1 from '/digitalXray.png'
+import Tool2 from '/sonido.png'
+import Tool3 from '/Sugery.png'
+import Tool4 from '/Laboratoy.png'
+import Tool5 from '/Patio.png'
+import Tool6 from '/eat.png'
+import Tool7 from '/Lavado.png'
+import Tool8 from '/toys.png'
 
 
 export const AnimalesData = [
