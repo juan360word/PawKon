@@ -28,7 +28,10 @@ export const AnimalesData = [
         name:'Jorge',
         breed:'Beagle',
         image:Image1,
-        description:'This little dog was found on the street. His name is Jorge; he`s a very cute, friendly dog, and the most amazing thing is that he smiles.'
+        description: {
+          en:'This little dog was found on the street. His name is Jorge; he`s a very cute, friendly dog, and the most amazing thing is that he smiles.',
+          es:'Este perrito fue encontrado en la calle. Se llama Jorge; es muy tierno y amigable, y lo más increíble es que sonríe.'
+        }
 
     },
     {
@@ -36,40 +39,58 @@ export const AnimalesData = [
         name:'Geto',
         breed:'Cornish Rex ',
         image:Image2,
-        description:'A cat that was found in an abandoned house, but we rescued him. The best part is that he stuck out his tongue when we took his picture.'
+        description:{
+          en:'A cat that was found in an abandoned house, but we rescued him. The best part is that he stuck out his tongue when we took his picture.',
+          es: 'Un gato que fue encontrado en una casa abandonada, pero lo rescatamos. Lo mejor es que sacó la lengua cuando le tomamos la foto.'
+        }
     },
     {
         id:3,
         name:'Rom',
         breed:'Penguin',
         image:Image3,
-        description:'A penguin rescued from the wrong hands of people; he was cared for and is now part of our team—he`s very fluffy.'
+        description: {
+        en: 'A penguin rescued from the wrong hands of people; he was cared for and is now part of our team—he`s very fluffy.',
+        es: 'Un pingüino rescatado de las manos equivocadas; fue cuidado y ahora es parte de nuestro equipo — es muy esponjoso.'
+    }
     },
     {
         id:4,
         name:'Osito Bonito',
         breed:'Ursidae',
         image:Image4,
-        description:'Let us introduce you to Osito Bonito—but we’ve given him the nickname Luis. He’s a very friendly bear; he always has us running around because he’s always wanting to play. Don’t let his eyes intimidate you.'
+         description: {
+        en: 'Let us introduce you to Osito Bonito—but we`ve given him the nickname Luis. He`s a very friendly bear; he always has us running around because he`s always wanting to play. Don`t let his eyes intimidate you.',
+        es: 'Te presentamos a Osito Bonito — aunque le pusimos el apodo de Luis. Es un oso muy amigable; siempre nos tiene corriendo porque todo el tiempo quiere jugar. No dejes que sus ojos te intimiden.'
+    }
     },
     {
         id:5,
         name:'Bambi Junior',
         image:Image5,
-        description:'We saved this deer from a bullet—a hunter had tried to kill it, but we saved it, and now it`s happy and living a trouble-free life.'
+         description: {
+        en: 'We saved this deer from a bullet—a hunter had tried to kill it, but we saved it, and now it`s happy and living a trouble-free life.',
+        es: 'Salvamos a este venado de una bala — un cazador intentó matarlo, pero lo rescatamos, y ahora es feliz y vive una vida sin problemas.'
+    }
         
     },
     {
         id:6,
         name:'Pogo',
         image:Image6,
-        description:'Pogo was a little pig who lived with owners who loved each other very much, but they separated. They didn`t abandon him, though PawKon found him, gave him a bath, and now he`s playing with the others.'
+       description: {
+        en: 'Pogo was a little pig who lived with owners who loved each other very much, but they separated. They didn`t abandon him, though PawKon found him, gave him a bath, and now he`s playing with the others.',
+        es: 'Pogo era un cerdito que vivía con dueños que se querían mucho, pero se separaron. No lo abandonaron, aunque PawKon lo encontró, lo bañó, y ahora juega con los demás.'
+    }
     },
     {
         id:7,
         name:'Tony',
         image:Image7,
-        description:'Tony was the only dog we couldn`t save. We tried everything we cleaned him, bathed him, gave him everything we could, and kept trying. Even the other animals could sense it and became sad, but he passed away. What makes him special and memorable is the kindness he showed to everyone, and also how much his family loves him.'
+      description: {
+        en: 'Tony was the only dog we couldn`t save. We tried everything we cleaned him, bathed him, gave him everything we could, and kept trying. Even the other animals could sense it and became sad, but he passed away. What makes him special and memorable is the kindness he showed to everyone, and also how much his family loves him.',
+        es: 'Tony fue el único perrito que no pudimos salvar. Lo intentamos todo — lo limpiamos, lo bañamos, le dimos todo lo que estaba en nuestras manos. Hasta los otros animales lo sintieron y se pusieron tristes, pero falleció. Lo que lo hace especial y memorable es la bondad que mostró con todos, y también lo mucho que su familia lo ama.'
+    }
     }
 ]
 

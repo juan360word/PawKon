@@ -73,11 +73,20 @@ A complete full-stack veterinary clinic platform built with the **MERN stack** a
 ### External Services
 - **[The Dog API](https://www.thedogapi.com/)** — breed data & images (proxied through the backend to protect the API key)
 
-### Deployment (planned)
-- **AWS** — EC2 / Elastic Beanstalk (backend) + S3 + CloudFront (frontend)
-- **MongoDB Atlas** — managed database on AWS infrastructure
+### Deployment AWS
+**AWS EC2** | Backend hosting (Node.js API with PM2 process manager) |
+| **AWS S3** | Frontend static hosting (Vite production build) |
+| **AWS CloudFront** | CDN with global distribution & HTTPS |
+| **AWS Elastic IP** | Static IP for the backend instance |
+| **MongoDB Atlas** | Managed database (running on AWS infrastructure) |
 
----
+### Production Architecture
+
+User → CloudFront (CDN + HTTPS) → S3 (React build)
+             ↓ API calls
+      EC2 + PM2 (Express API) → MongoDB Atlas
+             ↓
+       The Dog API
 
 ## 📁 Project Structure
 

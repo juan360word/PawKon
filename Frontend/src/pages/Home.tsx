@@ -5,6 +5,7 @@ import  { AnimalesData } from "../Types/DataInfo"
 import IconVeterinaria from '/home/juan360dev/Escritorio/PawKon/Frontend/public/Veterian.png'
 import { VetToolsData } from "../Types/DataInfo"
 import { useTranslation } from "react-i18next"
+import i18n from "../Locales/I18n/Traduccion_I18n"
 
 
 
@@ -14,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function Home() {
   const { t } = useTranslation()
+  const lang = i18n.language as "en" | "es"
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
@@ -261,7 +263,7 @@ export default function Home() {
                       {dog.name}
                     </h3>
                     <p style={{ color: '#fffef0' }} className="text-lg opacity-80 mt-2">
-                      {dog.description}
+                      {dog.description[lang]}
                     </p>
                   </div>
                 </div>
