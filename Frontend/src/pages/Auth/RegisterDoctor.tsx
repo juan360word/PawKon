@@ -38,7 +38,7 @@ export default function RegisterDoctor() {
 
   return (
     <>
-      <div className="mx-auto w-6/15 mt-30 p-8 rounded-2xl shadow-lg bg-white">
+      <div className="mx-auto w-full md:w-6/15 mt-10 md:mt-30 px-4 py-6 md:p-8 rounded-2xl shadow-lg bg-white">
         <h1 className="text-2xl font-bold text-center mb-6">{t("auth.createAccount")}</h1>
 
         <form onSubmit={handleSubmit(onSubmit, onError)} className="flex flex-col gap-4">

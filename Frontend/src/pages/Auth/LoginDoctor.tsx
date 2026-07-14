@@ -22,7 +22,7 @@ export default function LoginDoctor() {
   return (
   <>
 
-   <div className="mx-auto w-6/15 mt-50 p-8 rounded-2xl shadow-lg bg-white">
+   <div className="mx-auto w-full md:w-6/15 mt-10 md:mt-50 px-4 py-6 md:p-8 rounded-2xl shadow-lg bg-white">
       <h1 className="text-2xl font-bold text-center mb-6">{t("auth.welcomeDoctor")}</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
